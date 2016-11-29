@@ -1,0 +1,122 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#/">Wait and Eat</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#/login" ng-hide="vm.isLoggedIn()">Log in</a></li>
+                <li><a href="" ng-click="vm.logout()" ng-show="vm.isLoggedIn()">Log out</a></li>
+            </ul>
+        </div><!--/.nav-collapse -->
+
+
+
+
+      <div class="navbar navbar-second" role="navigation" ng-show="vm.isLoggedIn()" >
+		<div class="container-fluid">
+
+			<ul class="nav navbar-nav" >
+
+				<li ng-class="{active:isActive('/waitlist')}" >
+					<a href="#/waitlist" class="link-icon">
+						<i class="fa fa-money" aria-hidden="true"></i>
+						<span style="text-transform: uppercase;" translate>Gastos</span>
+					</a>
+				</li>
+				<li ng-class="{active:isActive('/cards')}">
+					<a href="#/cards" class="link-icon">
+						<b>
+              <i class="fa fa-credit-card" aria-hidden="true"></i></span></b>
+						<span style="text-transform: uppercase;" translate>Cartões</span>
+					</a>
+				</li>
+				<li ng-class="{active:isActive('/hcc/movement')}" ng-if="isAuthorized('aircraft_movement.view')">
+					<a href="#/hcc/movement" class="link-icon">
+						<span class="siga-icon siga-icon-movimentacao"></span>
+						<span style="text-transform: uppercase;" translate>Movimentação</span>
+					</a>
+				</li>
+				<li ng-class="{active:isActive('/hcc/channels')}" ng-if="isAuthorized('hcc.channel_flight.view')">
+					<a href="#/hcc/channels" class="link-icon">
+						<span class="siga-icon siga-icon-calhas"></span>
+						<span style="text-transform: uppercase;" translate>Controle</span>
+					</a>
+				</li>
+				<li ng-class="{active:isActive('/hcc/monitoring/')}" ng-if="isAuthorized('hcc.monitoring.view-full') || isAuthorized('hcc.monitoring.view-normal')">
+					<a href="#/hcc/monitoring" class="link-icon">
+						<span class="siga-icon siga-icon-monitoramento"></span>
+						<span style="text-transform: uppercase;" translate>Monitoramento</span>
+					</a>
+				</li>
+				<li ng-class="{active:isActive('/hcc/indices_operacao')}" ng-if="isAuthorized('indices_operation.export')">
+					<a href="#/hcc/indices_operacao" class="link-icon">
+						<span class="siga-icon siga-icon-indices-operacao"></span>
+						<span style="text-transform: uppercase;" translate>Indices da Operação</span>
+					</a
+				</li>
+
+				<li ng-class="{active:isActive('/hcc/arrivalsdepartures')}" ng-if="isAuthorized('hcc.arrivals-departues.list')">
+					<a href="#/hcc/arrivalsdepartures" class="link-icon">
+						<span class="siga-icon siga-icon-chegadas-partidas"></span>
+						<span style="text-transform: uppercase;" translate>Chegadas e Partidas</span>
+					</a>
+				</li>
+
+				<li ng-class="{active:isActive('/hcc/monitoringflow')}" ng-if="isAuthorized('hcc.monitoring-flow.list')">
+					<a href="#/hcc/monitoringflow" class="link-icon">
+						<span class="siga-icon siga-icon-monitoring-flow-v2"></span>
+						<span style="text-transform: uppercase;" translate>Monitoring FLOW</span>
+					</a>
+				</li>
+
+
+
+			</ul>
+			<ul class="nav navbar-nav" >
+
+				<li ng-class="{active:isActive('/pnae/passengercontrol')}" ng-if="isAuthorized('pnae.pax-control.view') && $storage.currentAirport.code != 'SCL'">
+<!-- 					<a href="#/pnae/passengercontrol" class="link-icon">  -->
+					<a href="#/pnae/passengercontrol" ng-click="linkPnae($storage.currentAirport.id);" class="link-icon" >
+<!-- 						<span class="siga-icon siga-icon-indicador"></span>  -->
+						<span class="siga-icon siga-icon-pnae"></span>
+						<span style="text-transform: uppercase;" translate>Pax Control</span>
+					</a>
+				</li>
+
+			</ul>
+
+			<ul class="nav navbar-nav pull-right" >
+				<li ng-class="{active:isActive('/hcc/config')}" ng-if="isAuthorized('hcc.sla.view')">
+					<a href="#/hcc/config">
+					<span class="glyphicon glyphicon-cog"></span>
+						<strong translate>Configurações</strong>
+					</a>
+				</li>
+			</ul>
+
+
+		</div>
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+</nav>
