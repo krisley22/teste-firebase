@@ -5,15 +5,15 @@
     .module('app.core')
     .factory('typeSpentService', typeSpentService);
 
-  partyService.$inject = ['$firebaseArray', 'firebaseDataService'];
+  cardService.$inject = ['$firebaseArray', 'firebaseDataService'];
 
-  function partyService($firebaseArray, firebaseDataService) {
+  function cardService($firebaseArray, firebaseDataService) {
 
     var typeSpents = null;
 
     var service = {
-      Party: Party,
-      getPartiesByUser: getPartiesByUser,
+      TypeSpent: TypeSpent,
+      getTypeSpentsByUser: getTypeSpentsByUser,
       reset: reset
     };
 
@@ -21,13 +21,17 @@
 
     ////////////
 
+    function TypeSpent() {
+      this.name = '';
+      this.visible = true;
 
+    }
 
-    function getTypeSpentByUser(uid) {
+    function getTypeSpentsByUser(uid) {
       if (!typeSpents) {
-        typeSpents = $firebaseArray(firebaseDataService.users.child(uid).child('parties'));
+        typeSpents = $firebaseArray(firebaseDataService.users.child(uid).child('typeSpents'));
       }
-      return typeSpents;
+      return cards;
     }
 
     function reset() {

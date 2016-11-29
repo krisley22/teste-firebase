@@ -24,21 +24,22 @@
     angular.module('app.typeSpentList')
       .controller('TypeSpentController', TypeSpentController);
 
-    TypeSpentController.$inject = ['cardService', 'user', '$scope'];
+    TypeSpentController.$inject = ['typeSpentService', 'user', '$scope'];
 
-    function TypeSpentController(cardService, user, $scope) {
+    function TypeSpentController(typeSpentService, user, $scope) {
       var vm = this;
 
         vm.typeSpents  = [{'name':'teste'}];
         $scope.teste = 'testeeeee';
 
-        vm.cards = cardService.getCardsByUser(user.uid);
+        vm.typeSpents = typeSpentService.getCardsByUser(user.uid);
 
 
         $scope.add = function addCard() {
 
-          vm.cards.$add(vm.newCard);
-          vm.newCard = new cardService.Card();
+          vm.typeSpents.$add(vm.newTypeSpent);
+          vm.newTypeSpent = new typeSpentService.TypeSpent();
+
         }
     }
 
