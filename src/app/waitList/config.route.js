@@ -28,6 +28,13 @@
       resolve: {user: resolveUser}
     })
 
+    .when('/spents', {
+      templateUrl: 'app/waitList/control-spent.html',
+      controller: 'ControlSpentController',
+      controllerAs: 'vm',
+      resolve: {user: resolveUser}
+    })
+
     ;
   }
 
