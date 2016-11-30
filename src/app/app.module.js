@@ -15,8 +15,7 @@
       'app.landing',
       'app.layout',
       'app.waitList',
-      'app.cardList',
-      'app.typeSpentList'
+      'app.cardList'
     ])
     .config(configFunction)
     .run(runFunction);

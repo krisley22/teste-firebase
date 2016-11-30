@@ -2,13 +2,16 @@
 <br>
 <br>
 <br>
+<br>
+<br>
+<br>
 <form  class="form-inline typeSpent-form">
     <div class="form-group">
         <input ng-model="vm.newTypeSpent.name" type="text" class="form-control" placeholder="Name" required>
     </div>
     <div class="form-group">
-
-        <input ng-model="vm.newTypeSpent.visible"  type="checkbox" required>
+        Visivel?
+        <input ng-model="vm.newTypeSpent.visible"  type="checkbox">
     </div>
 
     <button type="submit" class="btn btn-primary" ng-click="add()">Add typeSpent</button>
@@ -22,20 +25,20 @@
     </tr>
     </thead>
     <tr ng-repeat="typeSpent in vm.typeSpents">
-        <td>
+        <!--<td>
             <input ng-model="typeSpent.done" ng-change="vm.toggleDone(typeSpent)" type="checkbox">
-        </td>
+        </td-->
         <td>
             <div><strong>{{ typeSpent.name }} </strong></div>
 
         </td>
         <td>
-            <div>{{ typeSpent.visible ? 'Yes' : 'No' }}</div>
+            <div>{{ typeSpent.visible ? 'Sim' : 'Não' }}</div>
         </td>
 
         <td>
-            <button ng-click="vm.sendTextMessage(typeSpent)" class="btn btn-success">Send SMS</button>
-            <button ng-click="vm.removeParty(typeSpent)" class="btn btn-danger">Remove</button>
+
+            <button ng-click="remove(typeSpent)" class="btn btn-danger">Remove</button>
         </td>
     </tr>
     <tr >

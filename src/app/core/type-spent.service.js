@@ -5,9 +5,9 @@
     .module('app.core')
     .factory('typeSpentService', typeSpentService);
 
-  cardService.$inject = ['$firebaseArray', 'firebaseDataService'];
+  typeSpentService.$inject = ['$firebaseArray', 'firebaseDataService'];
 
-  function cardService($firebaseArray, firebaseDataService) {
+  function typeSpentService($firebaseArray, firebaseDataService) {
 
     var typeSpents = null;
 
@@ -31,7 +31,7 @@
       if (!typeSpents) {
         typeSpents = $firebaseArray(firebaseDataService.users.child(uid).child('typeSpents'));
       }
-      return cards;
+      return typeSpents;
     }
 
     function reset() {

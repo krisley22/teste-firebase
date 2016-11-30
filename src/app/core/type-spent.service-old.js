@@ -1,31 +1,46 @@
-angular.module('app.type-spent.service' ,[])
+(function() {
+  'use strict';
 
+  angular
+    .module('app.core')
+    .factory('typeSpentService', typeSpentService);
 
+  typeSpentService.$inject = ['$firebaseArray', 'firebaseDataService'];
 
-
-.factory('typeSpentService',
-//.factory('typeSpentService', [ '$firebaseArray', 'firebaseDataService',
-
-
-  function partyService() {
-//    function partyService($firebaseArray, firebaseDataService) {
+  function typeSpentService($firebaseArray, firebaseDataService) {
 
     var typeSpents = null;
 
     var service = {
-
+      TypeSpent: TypeSpent,
+      getTypeSpentsByUser: getTypeSpentsByUser,
+      reset: reset
     };
-
-    function getTypeSpentByUser(uid) {
-      if (!typeSpents) {
-        typeSpents =  [{name:'tes'}];//$firebaseArray(firebaseDataService.users.child(uid).child('cards'));
-      }
-      return typeSpents;
-    }
 
     return service;
 
+    ////////////
+
+    function TypeSpent() {
+      this.name = '';
+      this.visible = true;
+
+    }
+
+    function getTypeSpentsByUser(uid) {
+      if (!typeSpents) {
+        typeSpents = $firebaseArray(firebaseDataService.users.child(uid).child('typeSpents'));
+      }
+      return cards;
+    }
+
+    function reset() {
+      if (typeSpents) {
+        typeSpents.$destroy();
+        typeSpents = null;
+      }
+    }
 
   }
 
-);
+})();
